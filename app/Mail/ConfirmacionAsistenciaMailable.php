@@ -27,7 +27,7 @@ class ConfirmacionAsistenciaMailable extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(subject: 'Confirmacion Asistencia');
+        return new Envelope(subject: 'Confirmación Asistencia');
     }
 
     /**

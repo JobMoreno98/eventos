@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             padding: 0;
             width: 100%;
         }
+
         .email-container {
             width: 100%;
             max-width: 600px;
@@ -21,21 +23,26 @@
             border-radius: 8px;
             padding: 20px;
         }
+
         .email-header {
             text-align: center;
             margin-bottom: 20px;
         }
+
         .email-content {
             margin-bottom: 20px;
         }
+
         .image-container {
             text-align: center;
             margin-top: 20px;
         }
+
         .button-container {
             text-align: center;
             margin-top: 30px;
         }
+
         .button {
             background-color: #4CAF50;
             color: white;
@@ -45,9 +52,11 @@
             margin: 5px;
             display: inline-block;
         }
+
         .button-danger {
             background-color: #f44336;
         }
+
         .footer {
             text-align: center;
             font-size: 12px;
@@ -56,11 +65,12 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="email-container">
         <div class="email-header">
-            <h1>Hola {{ $data['nombre'] }}</h1>
+            <h1>Estimado(a): {{ $data['nombre'] }}</h1>
         </div>
 
         <div class="image-container">
@@ -69,25 +79,28 @@
 
         <div class="email-content">
             <p style="text-align: center;">
-                Por favor, confirma si asistirás al evento. Haz clic en uno de los botones a continuación para registrar tu respuesta.
+                Agradecemos la confirmación de su asistencia al evento.
             </p>
         </div>
 
         <div class="button-container">
-            <a href="{{ route('confirmar.asistencia', ['correo' => $data['correo'], 'asistencia' => '1']) }}" class="button">
-                Confirmar Asistencia
+            <a href="{{ route('confirmar.asistencia', ['correo' => $data['correo'], 'asistencia' => '1']) }}"
+                class="button">
+                Confirmar asistencia
             </a>
-            <a href="{{ route('confirmar.asistencia', ['correo' => $data['correo'], 'asistencia' => '0']) }}" class="button button-danger">
-                No Asistiré
+            <a href="{{ route('confirmar.asistencia', ['correo' => $data['correo'], 'asistencia' => '0']) }}"
+                class="button button-danger">
+                No podré asistir
             </a>
         </div>
 
         <div class="footer">
             <p>Gracias,<br>
-            **El equipo de {{ config('app.name') }}**
+                {{ config('app.name') }}
             </p>
         </div>
     </div>
 
 </body>
+
 </html>
