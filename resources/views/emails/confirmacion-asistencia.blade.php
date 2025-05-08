@@ -2,7 +2,7 @@
 <h1 style="color: #4CAF50; font-size: 24px; text-align: center;">
     Hola, {{ $data['nombre'] }}
 </h1>
-{{  var_dump($data)  }}
+
 <img src="data:image/jpeg;base64,{{ $data['base64Image'] }}" alt="Imagen del evento" style="max-width: 100%; height: auto;"/>
 
 
