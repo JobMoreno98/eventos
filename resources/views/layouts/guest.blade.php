@@ -19,7 +19,8 @@
     <div class="d-flex flex-column flex-md-row h-100 align-items-center default-bg-dark">
         <!-- Left Section (Hidden on Mobile) -->
         <div class="flex-col w-50 d-none d-md-block text-center">
-            <img class="my-5" src="{{ asset('logo_light.png') }}" width="30%" height="auto" alt="">
+            <img class="my-5" src="{{ asset('img/logo_cucsh.jpg') }}" style="border-radius: 50%;" width="30%"
+                height="auto" alt="">
             <h1 class="text-center"><span>{{ config('app.name', 'Laravel') }}</span></h1>
         </div>
 

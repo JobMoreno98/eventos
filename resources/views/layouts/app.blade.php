@@ -42,7 +42,7 @@
             <aside class="app-sidebar default-bg-dark shadow" data-bs-theme="dark">
                 <div class="sidebar-brand text-inv-primary">
                     <a href="/" class="brand-link">
-                        <img src="{{ asset('logo_light.png') }}" alt="Force HRM Logo"
+                        <img src="{{ asset('img/logo_cucsh.jpg') }}" style="    border-radius: 50%;" alt="Force HRM Logo"
                             class="brand-image opacity-75 shadow">
                         <span class="brand-text fw-light ">{{ env('APP_NAME', 'Force HRM ©') }}</span>
                     </a>
