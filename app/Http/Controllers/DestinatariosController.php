@@ -38,6 +38,7 @@ class DestinatariosController extends Controller
             // No asistirá
             $usuario->aceptado = 2;
         }
+        $usuario->update();
         return redirect()->route('verificacion.correcta');
     }
     public function verificacionCorrecta()
