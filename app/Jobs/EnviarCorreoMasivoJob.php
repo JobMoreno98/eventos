@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Mail\ConfirmacionAsistenciaMailable;
 use App\Mail\envioCorreos;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -26,6 +27,6 @@ class EnviarCorreoMasivoJob implements ShouldQueue
      */
     public function handle(): void
     {
-        Mail::to($this->email)->send(new NotificacionMasivaMail($this->data));
+        Mail::to($this->email)->send(new ConfirmacionAsistenciaMailable($this->data));
     }
 }

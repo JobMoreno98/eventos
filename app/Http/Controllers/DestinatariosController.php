@@ -22,13 +22,20 @@ class DestinatariosController extends Controller
     }
     public function confirmacion(Request $request, $correo)
     {
-        $user = Destinatarios::where('correo', $correo)->first();
-        if (!$user) {
+
+        $usuario = Destinatarios::where('correo', $correo)->firstOrFail();
+        $asistencia = $request->query('asistencia'); // 1 o 0
+        if (!$usuario) {
             return response()->json(['message' => 'Not Found'], 404);
         }
-        $user->aceptado = 1;
-        $user->update();
-        return $request;
+        // Lógica para procesar la asistencia
+        if ($asistencia == 1) {
+            // Confirmación de asistencia
+            $usuario->aceptado = 1;
+        } else {
+            // No asistirá
+            $usuario->aceptado = 2;
+        }
         return redirect()->route('verificacion.correcta');
     }
     public function verificacionCorrecta()

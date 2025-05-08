@@ -1,40 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hola, {{ $data['nombre'] }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa;">
 
-<body>
-    <div class="container">
-        <h1>Hola, {{ $data['nombre'] }}</h1>
-        <div>
-            <img src="{{ asset('img/protesta.jpg') }}" class="w-100" alt="">
+    <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: white;">
+        <h1 style="color: #212529; text-align: center;">Hola, {{ $data['nombre'] }}</h1>
+
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="{{ asset('img/protesta.jpg') }}" alt="Imagen" style="max-width: 100%; height: auto;">
         </div>
-        <form action="{{ route('confirmar.asistencia', $data['correo']) }}" method="post"
-            class="d-flex align-items-center flex-column">
-            @method('post')
+
+        <form action="{{ route('confirmar.asistencia', $data['correo']) }}" method="POST" style="text-align: center;">
             @csrf
-            <div class="my-4">
+            @method('post')
 
-                <input type="radio" class="btn-check" name="asistencia" id="success-outlined" autocomplete="off"
-                    >
-                <label class="btn btn-outline-success" for="success-outlined">Asistire</label>
+            <div style="margin: 20px 0;">
+                <label style="margin-right: 10px;">
+                    <input type="radio" name="asistencia" value="1">
+                    <span style="display: inline-block; padding: 10px 20px; border: 1px solid #198754; color: #198754; border-radius: 4px; text-decoration: none;">
+                        Asistiré
+                    </span>
+                </label>
 
-                <input type="radio" class="btn-check" name="noasistencia" id="danger-outlined" autocomplete="off">
-                <label class="btn btn-outline-danger" for="danger-outlined">No asistire</label>
+                <label>
+                    <input type="radio" name="asistencia" value="0">
+                    <span style="display: inline-block; padding: 10px 20px; border: 1px solid #dc3545; color: #dc3545; border-radius: 4px; text-decoration: none;">
+                        No asistiré
+                    </span>
+                </label>
             </div>
-            <div>
-                <button type="submit" class="btn btn-sm btn-success">Enviar</button>
-            </div>
+
+            <button type="submit" style="padding: 10px 20px; background-color: #198754; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Enviar
+            </button>
         </form>
-
     </div>
-</body>
 
+</body>
 </html>

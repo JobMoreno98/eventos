@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\DestinatariosController;
-use App\Models\Destinatarios;
 use Illuminate\Support\Facades\Route;
+
+use App\Mail\ConfirmacionAsistenciaMailable;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,4 +24,24 @@ Route::get('/verificacion-corracta', [DestinatariosController::class, 'verificac
 Route::get('correo', function () {
     $data = ['nombre' => 'Job Moreno', 'correo' => 'jobmoreno98@gmail.com'];
     return view('emails.notificacion', compact('data'));
+});
+
+
+Livewire::setUpdateRoute(function ($handle) {
+    return Route::post('/eventos/public/livewire/update', $handle);
+});
+
+
+Route::get('/preview-correo', function () {
+
+    $path = asset('img/protesta.jpg');
+    $imageData = base64_encode(file_get_contents($path));
+
+    $data = [
+        'nombre' => 'Carlos',
+        'correo' => 'carlos@example.com',
+        'base64Image' => $imageData
+    ];
+
+    return (new ConfirmacionAsistenciaMailable($data))->render();
 });
