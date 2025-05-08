@@ -74,7 +74,7 @@
                     extend: 'excelHtml5',
                     title: 'Destinatarios',
                     exportOptions: {
-                        columns: [0, 1, 2,3]
+                        columns: [0, 1, 2, 3]
                     }
                 }]
             });
