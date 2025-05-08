@@ -15,3 +15,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::resource('destinatarios', DestinatariosController::class)->names('destinatarios');
     Route::get('/enviar-correos', [DestinatariosController::class, 'enviarCorreos'])->name('enviar.correos');
 });
+
+Route::post('/destinatarios-confirmacion/{correo}', [DestinatariosController::class, 'confirmacion'])->name('confirmar.asistencia');
+Route::get('/verificacion-corracta', [DestinatariosController::class, 'verificacionCorrecta'])->name('verificacion.correcta');
+
+Route::get('correo', function () {
+    $data = ['nombre' => 'Job Moreno', 'correo' => 'jobmoreno98@gmail.com'];
+    return view('emails.notificacion', compact('data'));
+});

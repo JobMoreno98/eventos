@@ -27,7 +27,7 @@ class NotificacionMasivaMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Notificacion Masiva Mail',
+            subject: 'Notificacion Eventos CUCSH',
         );
     }
 
