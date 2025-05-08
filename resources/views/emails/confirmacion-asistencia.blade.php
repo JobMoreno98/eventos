@@ -1,5 +1,5 @@
 @component('mail::message')
-<h1 style="color: #4CAF50; font-size: 24px; text-align: center;">
+<h1 style="font-size: 24px; text-align: center;">
     Hola, {{ $data['nombre'] }}
 </h1>
 
@@ -11,13 +11,13 @@
 </p>
 
 @component('mail::button', ['url' => route('confirmar.asistencia', ['correo' => $data['correo'], 'asistencia' => '1'])])
-    <div style="background-color: #28a745;  padding: 10px 20px;   color: white; border-radius: 5px; text-align: center;">
+    <div style="  color: white; border-radius: 5px; text-align: center;">
         Confirmar Asistencia
     </div>
 @endcomponent
 
 @component('mail::button', ['url' => route('confirmar.asistencia', ['correo' => $data['correo'], 'asistencia' => '0'])])
-    <div style="background-color: #dc3545;   padding: 10px 20px;  color: white; border-radius: 5px; text-align: center;">
+    <div style="  color: white; border-radius: 5px; text-align: center;">
         No Asistiré
     </div>
 @endcomponent
