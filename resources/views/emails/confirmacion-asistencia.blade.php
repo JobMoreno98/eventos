@@ -64,7 +64,7 @@
         </div>
 
         <div class="image-container">
-            <img src="{{ $data['image'] }}" alt="imagen">
+            <img src="https://sige.cucsh.udg.mx/protesta.jpg" alt="imagen">
         </div>
 
         <div class="email-content">
