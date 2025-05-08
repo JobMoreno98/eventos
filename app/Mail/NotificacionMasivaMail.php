@@ -9,14 +9,14 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class envioCorreos extends Mailable
+class NotificacionMasivaMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public $data)
     {
         //
     }
@@ -27,7 +27,7 @@ class envioCorreos extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Envio Correos',
+            subject: 'Notificacion Masiva Mail',
         );
     }
 
@@ -37,7 +37,8 @@ class envioCorreos extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.notificacion',
+            with: ['data' => $this->data]
         );
     }
 

@@ -5,10 +5,12 @@
         </h2>
     </x-slot>
 
-
     <div class="py-12">
         <div class="max-w-xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden p-3 shadow-xl sm:rounded-lg">
+                <div class="text-center">
+                    <a href="{{ route('enviar.correos') }}" class="btn btn btn-success">Enviar correos</a>
+                </div>
                 <table class="display table" id="destinatarios">
                     <thead>
                         <tr>
