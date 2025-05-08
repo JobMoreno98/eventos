@@ -15,11 +15,10 @@ class DestinatariosController extends Controller
     }
     public function enviarCorreos()
     {
-
-        $svgPath = public_path('img/protesta.jpg');
-        $imageData = base64_encode(file_get_contents($svgPath));
-
-        EnviarCorreoMasivoJob::dispatch('kevin.orozco@csh.udg.mx', ['nombre' => 'Job Moreno', 'correo' => 'kevin.orozco@csh.udg.mx','base64Image' => $imageData]);//->delay(now()->addSeconds(2));
+        $destinatarios = Destinatarios::where('aceptado', 0)->get();
+        foreach ($destinatarios as $key => $value) {
+            EnviarCorreoMasivoJob::dispatch($value->correo, ['nombre' => $value->nombre, 'correo' => $value->correo])->delay(now()->addSeconds(2));
+        }
         return redirect()->route('destinatarios.index');
     }
     public function confirmarAsistencia(Request $request, $correo)
