@@ -48,10 +48,28 @@ class ConfirmacionAsistenciaMailable extends Mailable
      */
     public function build()
     {
-        // Aquí usamos 'with' para pasar los datos a la vista
-        return $this->markdown('emails.confirmacion-asistencia')
-                    ->subject('Confirmación de asistencia')
-                    ->with('data', $this->data); // Pasamos los datos aquí
+        $svgPath = public_path('img/protesta.jpg');
+
+        if (!file_exists($svgPath)) {
+            \Log::error("El archivo de imagen no se encuentra: " . $svgPath);
+            return $this; // Si el archivo no existe, no continuar
+        }
+        $svgBase64 = base64_encode(file_get_contents($svgPath));
+        // Crear la URL de la imagen en base64
+        $imageDataUrl = 'data:image/jpeg;base64,' . $svgBase64;
+
+        // Añadir la imagen a los datos
+        $this->data['image'] = $imageDataUrl;
+
+        // Usamos 'view()' para pasar los datos a la vista Blade
+        $email = $this->view('emails.confirmacion-asistencia')
+            ->subject('Confirmación de asistencia')
+            ->with([
+                'data' => $this->data
+            ]);
+
+
+        return $email;
     }
 
     /**
