@@ -16,8 +16,10 @@ class DestinatariosController extends Controller
     public function enviarCorreos()
     {
         //$destinatarios = Destinatarios::where('aceptado', 0)->get();
-
-        EnviarCorreoMasivoJob::dispatch('jobmoreno98@gmail.com', ['nombre' => 'Job Moreno', 'correo' => 'jobmoreno98@gmail.com'])->delay(now()->addSeconds(2));
+        $path = asset('img/protesta.jpg');
+        $imageData = base64_encode(file_get_contents($path));
+    
+        EnviarCorreoMasivoJob::dispatch('jobmoreno98@gmail.com', ['nombre' => 'Job Moreno', 'correo' => 'jobmoreno98@gmail.com','base64Image' => $imageData])->delay(now()->addSeconds(2));
         return redirect()->route('destinatarios.index');
     }
     public function DestinatariosController(Request $request, $correo)
