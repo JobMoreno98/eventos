@@ -19,7 +19,7 @@ class DestinatariosController extends Controller
         $path = asset('img/protesta.jpg');
         $imageData = base64_encode(file_get_contents($path));
     
-        EnviarCorreoMasivoJob::dispatch('jobmoreno98@gmail.com', ['nombre' => 'Job Moreno', 'correo' => 'jobmoreno98@gmail.com','base64Image' => $imageData])->delay(now()->addSeconds(2));
+        EnviarCorreoMasivoJob::dispatch('kevin.orozco@csh.udg.mx', ['nombre' => 'Job Moreno', 'correo' => 'kevin.orozco@csh.udg.mx','base64Image' => $imageData])->delay(now()->addSeconds(2));
         return redirect()->route('destinatarios.index');
     }
     public function confirmarAsistencia(Request $request, $correo)
