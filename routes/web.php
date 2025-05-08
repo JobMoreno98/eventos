@@ -32,6 +32,10 @@ Livewire::setUpdateRoute(function ($handle) {
 });
 
 
+
+Route::get('/confirmar-asistencia/{correo}', [DestinatariosController::class, 'confirmarAsistencia'])->name('confirmar.asistencia');
+
+
 Route::get('/preview-correo', function () {
 
     $path = asset('img/protesta.jpg');

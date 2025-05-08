@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use App\Mail\ConfirmacionAsistenciaMailable;
-use App\Mail\envioCorreos;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use App\Mail\NotificacionMasivaMail;
