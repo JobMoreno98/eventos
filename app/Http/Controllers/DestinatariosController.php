@@ -22,7 +22,7 @@ class DestinatariosController extends Controller
         EnviarCorreoMasivoJob::dispatch('jobmoreno98@gmail.com', ['nombre' => 'Job Moreno', 'correo' => 'jobmoreno98@gmail.com','base64Image' => $imageData])->delay(now()->addSeconds(2));
         return redirect()->route('destinatarios.index');
     }
-    public function DestinatariosController(Request $request, $correo)
+    public function confirmarAsistencia(Request $request, $correo)
     {
 
         $usuario = Destinatarios::where('correo', $correo)->firstOrFail();
