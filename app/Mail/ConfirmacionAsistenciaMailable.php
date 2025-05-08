@@ -27,7 +27,7 @@ class ConfirmacionAsistenciaMailable extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(subject: 'Confirmacion Asistencia Mailable');
+        return new Envelope(subject: 'Confirmación Asistencia');
     }
 
     /**
@@ -48,10 +48,14 @@ class ConfirmacionAsistenciaMailable extends Mailable
      */
     public function build()
     {
-        // Aquí usamos 'with' para pasar los datos a la vista
-        return $this->markdown('emails.confirmacion-asistencia')
-                    ->subject('Confirmación de asistencia')
-                    ->with('data', $this->data); // Pasamos los datos aquí
+        // Usamos 'view()' para pasar los datos a la vista Blade
+        $email = $this->view('emails.confirmacion-asistencia')
+            ->subject('Confirmación de asistencia')
+            ->with([
+                'data' => $this->data
+            ]);
+
+        return $email;
     }
 
     /**
