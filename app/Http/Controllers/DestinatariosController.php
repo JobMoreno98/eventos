@@ -15,9 +15,11 @@ class DestinatariosController extends Controller
     }
     public function enviarCorreos()
     {
-        $destinatarios = Destinatarios::where('aceptado', 0)->get();
+        $destinatarios = Destinatarios::where('aceptado', 0)->where('enviado', 0)->get();
         foreach ($destinatarios as $key => $value) {
             EnviarCorreoMasivoJob::dispatch($value->correo, ['nombre' => $value->nombre, 'correo' => $value->correo])->delay(now()->addSeconds(2));
+            $value->enviado = 1;
+            $value->update();
         }
         return redirect()->route('destinatarios.index');
     }

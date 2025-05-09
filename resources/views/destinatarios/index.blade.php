@@ -16,11 +16,6 @@
 
 
         <style>
-            .dtsp-searchPanes {
-                width: 250px !important;
-                /* Ajusta el tamaño a lo que necesites */
-            }
-
             .dataTables_searchPanes table {
                 width: 100% !important;
             }
@@ -59,7 +54,7 @@
                             <th>Puesto</th>
                             <th>Correo</th>
                             <th>Asistencia</th>
-                            <th>Acciones</th>
+                            <th>Enviado</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,7 +64,7 @@
                                 <td>{{ $item->cargo }}</td>
                                 <td>{{ $item->correo }}</td>
                                 <td>{{ $item->asistencia }}</td>
-                                <td>Editar</td>
+                                <td>{{ $item->enviado == 0 ? 'Sin enviar' : 'Enviado' }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -124,13 +119,12 @@
                 searchPanes: {
                     cascadePanes: true,
                     viewTotal: true,
-                    layout: 'columns-1'
                 },
                 columnDefs: [{
                     searchPanes: {
                         show: true
                     },
-                    targets: [3]
+                    targets: [3, 4]
                 }],
                 select: true,
                 language: {
