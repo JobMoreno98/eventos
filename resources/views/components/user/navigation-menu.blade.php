@@ -22,8 +22,7 @@
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <li class="user-header default-bg-dark">
                         <img src="{{ getAuthUser()->profile_photo_url }}"
-                            style=" object-fit: cover;
-    aspect-ratio: 16 / 9;" class="rounded-3 w-100 shadow" alt="User Image">
+                            style=" object-fit: cover; aspect-ratio: 16 / 9;" class="rounded-3 w-100 shadow" alt="User Image">
                         <p>
                             {{ getAuthUser()->name }}
                         </p>
