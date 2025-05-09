@@ -8,10 +8,10 @@
         </ul>
         <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-                {{--<a class="nav-link" href="#" data-lte-toggle="fullscreen">
+                {{-- <a class="nav-link" href="#" data-lte-toggle="fullscreen">
                     <i data-lte-icon="maximize" class="bi bi-arrows-fullscreen"></i>
                     <i data-lte-icon="minimize" class="bi bi-fullscreen-exit" style="display: none;"></i>
-                </a>--}}
+                </a> --}}
             </li>
             <li class="nav-item dropdown user-menu ">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -21,8 +21,9 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <li class="user-header default-bg-dark">
-                        <img src="{{ getAuthUser()->profile_photo_url }}" class="rounded-circle shadow"
-                            alt="User Image">
+                        <img src="{{ getAuthUser()->profile_photo_url }}"
+                            style=" object-fit: cover;
+    aspect-ratio: 16 / 9;" class="rounded-3 w-100 shadow" alt="User Image">
                         <p>
                             {{ getAuthUser()->name }}
                         </p>
@@ -32,10 +33,10 @@
 
                     </li>
                     <li class="user-footer">
-                        <a href="{{ route('profile.show') }}" class="btn btn-default btn-flat">Profile</a>
+                        <a href="{{ route('profile.show') }}" class="btn btn-default btn-flat">{{ __('Profile') }}</a>
                         <a class="btn btn-default btn-flat float-end" href="{{ getLogoutRoute('web') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            {{ __('Sign out') }}
+                            {{ __('Log Out') }}
                         </a>
                         <form method="POST" id="logout-form" action="{{ getLogoutRoute('web') }}">
                             @csrf

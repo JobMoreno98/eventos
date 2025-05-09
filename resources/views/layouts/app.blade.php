@@ -22,12 +22,8 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link href="https://cdn.datatables.net/2.3.0/css/dataTables.bootstrap5.min.css" rel="stylesheet"
-        integrity="sha384-xkQqWcEusZ1bIXoKJoItkNbJJ1LG5QwR5InghOwFLsCoEkGcNLYjE0O83wWruaK9" crossorigin="anonymous">
-    <link href="https://cdn.datatables.net/buttons/3.2.3/css/buttons.bootstrap5.min.css" rel="stylesheet"
-        integrity="sha384-DJhypeLg79qWALC844KORuTtaJcH45J+36wNgzj4d1Kv1vt2PtRuV2eVmdkVmf/U" crossorigin="anonymous">
 
-
+    @stack('styles')
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @livewireStyles
 </head>
@@ -40,11 +36,11 @@
 
 
             <aside class="app-sidebar default-bg-dark shadow" data-bs-theme="dark">
-                <div class="sidebar-brand text-inv-primary">
-                    <a href="/" class="brand-link">
-                        <img src="{{ asset('img/logo_cucsh.jpg') }}" style="    border-radius: 50%;" alt="Force HRM Logo"
+                <div class="sidebar-brand text-inv-primary py-4">
+                    <a href="{{ route('home') }}" class="brand-link">
+                        <img src="{{ asset('img/logo_cucsh.jpg') }}" style="border-radius: 50%;" alt="Logo CUCSH"
                             class="brand-image opacity-75 shadow">
-                        <span class="brand-text fw-light ">{{ env('APP_NAME', 'Force HRM ©') }}</span>
+                        <span class="brand-text fw-light  fs-5">{{ env('APP_NAME', 'CUCSH') }}</span>
                     </a>
                 </div>
                 <div class="sidebar-wrapper">
@@ -148,27 +144,6 @@
 
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
-        integrity="sha384-+mbV2IY1Zk/X1p/nWllGySJSUN8uMs+gUAN10Or95UBH0fpj6GfKgPmgC5EXieXG" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.datatables.net/2.3.0/js/dataTables.min.js"
-        integrity="sha384-ehaRe3xJ0fffAlDr3p72vNw3wWV01C1/Z19X6s//i6hiF8hee+c+rabqObq8YlOk" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.datatables.net/2.3.0/js/dataTables.bootstrap5.min.js"
-        integrity="sha384-G85lmdZCo2WkHaZ8U1ZceHekzKcg37sFrs4St2+u/r2UtfvSDQmQrkMsEx4Cgv/W" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.datatables.net/buttons/3.2.3/js/dataTables.buttons.min.js"
-        integrity="sha384-zlMvVlfnPFKXDpBlp4qbwVDBLGTxbedBY2ZetEqwXrfWm+DHPvVJ1ZX7xQIBn4bU" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.bootstrap5.min.js"
-        integrity="sha384-BdedgzbgcQH1hGtNWLD56fSa7LYUCzyRMuDzgr5+9etd1/W7eT0kHDrsADMmx60k" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.datatables.net/buttons/3.2.3/js/buttons.html5.min.js"
-        integrity="sha384-+E6fb8f66UPOVDHKlEc1cfguF7DOTQQ70LNUnlbtywZiyoyQWqtrMjfTnWyBlN/Y" crossorigin="anonymous">
-    </script>
     @stack('scripts')
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
