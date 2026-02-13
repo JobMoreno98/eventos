@@ -19,13 +19,10 @@ class DestinatariosController extends Controller
             ->where('enviado', 0)
             ->get();
         foreach ($destinatarios as $key => $value) {
-            if (str_contains(";", $value->correo)) {
 
-                EnviarCorreoMasivoJob::dispatch($value->correo, ['nombre' => $value->nombre, 'correo' => $value->correo])->delay(now()->addSeconds(2));
-                $value->enviado = 1;
-                $value->update();
-            }
-            
+            EnviarCorreoMasivoJob::dispatch($value->correo, ['nombre' => $value->nombre, 'correo' => $value->correo])->delay(now()->addSeconds(2));
+            $value->enviado = 1;
+            $value->update();
         }
         return redirect()->route('destinatarios.index');
     }
