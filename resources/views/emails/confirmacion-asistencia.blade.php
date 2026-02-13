@@ -74,7 +74,7 @@
         </div>
 
         <div class="image-container">
-            <img src="https://sige.cucsh.udg.mx/protesta.jpg" alt="imagen">
+            <img src="http://148.202.17.240/eventos/public/img/invitacion.jpeg" alt="imagen">
         </div>
 
         <div class="email-content">

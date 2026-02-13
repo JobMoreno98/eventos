@@ -5,7 +5,10 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 use App\Mail\ConfirmacionAsistenciaMailable;
+use App\Models\Destinatarios;
 use Illuminate\Support\Facades\Mail;
+use Livewire\Livewire;
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
@@ -36,10 +39,49 @@ Route::get('/preview-correo', function () {
     $imageData = base64_encode(file_get_contents($path));
 
     $data = [
-        'nombre' => 'Carlos',
-        'correo' => 'carlos@example.com',
+        'nombre' => 'Job Moreno',
+        'correo' => 'job.moreno@example.com',
         'base64Image' => $imageData,
     ];
 
     return (new ConfirmacionAsistenciaMailable($data))->render();
+});
+
+
+Route::get('/correos-no-enviados', function () {
+
+    $destinatarios = Destinatarios::where('correo', 'like', '%;%')->get();
+
+    foreach ($destinatarios as $key => $value) {
+        $correos = explode(";", $value->correo);
+        Destinatarios::create([
+            'nombre' => $value->nombre,
+            'correo' => $correos[1],
+            'cargo' => $value->cargo
+        ]);
+        $value->correo = $correos[0];
+        $value->update();
+        //dd($value);
+    }
+    dd($destinatarios);
+    /*
+
+    $failedJobs = DB::table('failed_jobs')->get();
+
+    foreach ($failedJobs as $job) {
+        // Buscar todos los correos dentro del campo exception
+        preg_match_all(
+            '/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/',
+            $job->exception,
+            $matches
+        );
+
+        if (!empty($matches[0])) {
+            echo "ID: {$job->id}\n";
+            foreach ($matches[0] as $email) {
+                echo " - Email: {$email}\n";
+            }
+            echo "\n<br/>" ;
+        }
+    }*/
 });

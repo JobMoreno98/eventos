@@ -10,6 +10,7 @@ class Destinatarios extends Model
 {
     use SoftDeletes;
 
+    protected $guarded = [];
     protected function asistencia(): Attribute
     {
         $status = ['Sin respuesta', 'Asistencia', 'No asistencia'];
