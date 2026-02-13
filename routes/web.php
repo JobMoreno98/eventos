@@ -60,9 +60,11 @@ Route::get('/correos-no-enviados', function () {
             'cargo' => $value->cargo
         ]);
         $value->correo = $correos[0];
+        $value->enviado = 0;
         $value->update();
         //dd($value);
     }
+    return "Se realizo de forma exitosa.";
     dd($destinatarios);
     /*
 
