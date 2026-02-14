@@ -27,7 +27,7 @@ class ConfirmacionAsistenciaMailable extends Mailable
      */
     public function envelope(): Envelope
     {
-        return new Envelope(subject: 'Confirmación Asistencia');
+        return new Envelope(subject: 'Confirmación Asistencia 1er. Informe Lic. Dulce María Zúñiga Chávez');
     }
 
     /**
@@ -50,7 +50,7 @@ class ConfirmacionAsistenciaMailable extends Mailable
     {
         // Usamos 'view()' para pasar los datos a la vista Blade
         $email = $this->view('emails.confirmacion-asistencia')
-            ->subject('Confirmación de asistencia')
+            ->subject('Confirmación Asistencia 1er. Informe Lic. Dulce María Zúñiga Chávez')
             ->with([
                 'data' => $this->data
             ]);
